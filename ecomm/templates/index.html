@@ -1,0 +1,64 @@
+{% extends 'base.html'%}
+{% block 'main'%}
+
+{% load static%}
+
+<div class="row mt-3">
+    <div class="col-md-4 text-bg-light p-3">
+        <h5>Filter by category</h5>
+        <hr>
+        <p><a class="anchor" href="/catfilter/1">BY MOBILE</a></p>
+        <p><a class="anchor" href="/catfilter/2">BY SHOES</a></p>
+        <p><a class="anchor" href="/catfilter/3">BY CLOTHES</a></p>
+        <hr>
+        <form action="/range">
+            <div class="mb-3">
+                <div class="mb-3">
+                    <label for ="Input1" class="form-label">Min_Value:</label>
+                    <input type="number" name="min" class="form-control" id="Input1" placeholder="Minimum Value">
+                </div>
+                <div class="mb-3">
+                    <label for ="Input2" class="form-label">Max_Value:</label>
+                    <input type="number" name="max" class="form-control" id="Input2" placeholder="Maximum Value">
+                </div>
+                <div class="mb-3">
+                    <input type="submit" class="btn btn-primary" value="Register">
+                </div>
+            </div>
+        </form>
+        <h5> sort by price</h5>
+        <hr>
+        <p><a class="anchor" href="/sort/0">Low to high</a></p>
+        <p><a class="anchor" href="/sort/1">high to low</a></p>
+    </div>
+
+    
+<!-------Start to addcart------->
+
+<div class="'col-md-8">
+    <div class="row">
+        {% for x in products %}
+        <div class = "col-md-4" mt-4>
+            <div class="cart" style="width: 90%;">
+                <img src="{{x.pimage.url}}" width="100%" height="200px">
+                <div class="cart-body">
+                    <h5 class="cart-title">{{x.name}}</h5>
+                    <p class="cart-text">{{x.price}}</p>
+                    {% if  x.cat == 1 %}
+                    <p class="cart-text">MOBILE</p>
+                    {% elif x.cat == 2 %}
+                    <p class="cart-text">SHOES</p>
+                    {% else %}
+                    <p class="cart-text">CLOTHES</p>
+                    {% endif %}
+                    <a href="/pdetails/{{x.id}}" class="btn btn-danger">See details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</div>
+{% endblock 'main'%} 
+
+

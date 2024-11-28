@@ -1,0 +1,33 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/main.js' %}"></script>
+</head>
+<body style="background-color: aqua;">
+    <h1>welcome to home page....</h1>
+    <p>hey in {{greet}}</p>
+    <P>{{x}}</P>
+    <P>{{y}}</P>
+    {% if x > y %}
+    <p> {{x}} is greater</p>
+    {% else %}
+        <P>{{y}} is greater</P>
+    {% endif %}
+<!--for printing list-->
+    <p> list in{{l}}</p>
+    {% for x in l %}
+        <P>{{x}}
+        {% endfor%}
+        <br> 
+        <br>
+<button onclick="demo()">click here</button>
+<br>
+<br>
+<img  style="height: 500px; width: 500px;" src="{% static 'image/dog.jpg' %}">
+</body>
+</html>
